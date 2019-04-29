@@ -5,7 +5,7 @@
 
 require "ConexionBBDD.php";
 
-$lista_id = $_GET["id"];
+$lista_id = $_GET["id"];    //Get es un array que coge los valor de la URL llamados [nombreParametro] y lo puedes llamar.
 $consulta = "SELECT * FROM listas WHERE id_lista = $lista_id";
 
 if (!$resultado=$mysqli->query($consulta)) {
@@ -15,8 +15,8 @@ if (!$resultado=$mysqli->query($consulta)) {
     echo "Error: ".$mysqli->error. "<br>";
     exit;
 } else {
-    $fila=$resultado->fetch_assoc();
-    $nombre = $fila["nombreLista"];
+    $fila=$resultado->fetch_assoc();    //Convierte el resultado de la consulta (datos de la bbdd) en un array.
+    $nombre = $fila["nombreLista"];     //Aqui sacamos uno de los datos del array.
     echo "<h1> $nombre </h1>";
 }
 

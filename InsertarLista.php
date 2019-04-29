@@ -5,8 +5,9 @@
 
 require "ConexionBBDD.php";
 
-if (isset($_POST['nombreLista'])) {
-    $nombreLista = $_POST['nombreLista'];
+//Post = array. (Saca el valor de "nombreLista").
+if (isset($_POST['add'])) { //Si esta pulsado el boton add
+    $nombreLista = $_POST['nombreLista'];   //Recoge el nombreLista que se escribe en el "Titulo lista"
     $consulta ="INSERT INTO listas (nombreLista) VALUES ('$nombreLista');";
 
     if (!$resultado=$mysqli->query($consulta)) {
@@ -21,10 +22,14 @@ if (isset($_POST['nombreLista'])) {
 }
 ?>
 
-<form action="" method="post">
-    <p>Titulo lista: <input type="text" name="nombreLista" /></p>
-    <p><input value="Añadir lista" name="add" type="submit"/></p>
+<form action="" method="post">  //Cuando haces submit la página vuelve a cargar ella misma.
+    <p>Titulo lista: <input type="text" name="nombreLista" /></p>   //El campo de texto "Titulo lista", lo puedes llamar por su nombre "nombreLista"
+    <p><input value="Añadir lista" name="add" type="submit"/></p>   //El boton "Añadir lista" lo puedes llamar "add"
 </form>
 <a href="VerListas.php">Volver atrás</a>
 </body>
 </html>
+
+//Post es un array que inicialmente está vacio. No entra al if y la pagina se ejecuta llamandose a si misma
+//Carga los valores "nombreLista" y "add" y vuelve al if inicial donde ya está el array post con datos.
+//Llamamos a esos datos y ejecutamos las instrucciones.
