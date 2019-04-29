@@ -75,10 +75,10 @@ if (!$resultado=$mysqli->query($consulta)) {
     ?>
 
     <p>
-        <input value="Añadir lista" name="add" type="submit"/> //El boton "Añadir lista" lo puedes llamar por su nombre en el array Post "add"
-        <input value="Mostrar tareas" name="show" type="submit"/>   //El boton "Mostrar tareas" lo puedes llamar por su nombre en el array Post "show"
-        <input value="Modificar" name="modify" type="submit"/>  //El boton "Modificar" lo puedes llamar por su nombre en el array Post "modify"
-        <input value="Eliminar" name="delete" type="submit"/>   //El boton "Eliminar" lo puedes llamar por su nombre en el array Post "delete"
+        <input value="Añadir lista" name="add" type="submit"/> <!--El boton "Añadir lista" lo puedes llamar por su nombre en el array Post "add"-->
+        <input value="Mostrar tareas" name="show" type="submit"/>   <!--El boton "Mostrar tareas" lo puedes llamar por su nombre en el array Post "show"-->
+        <input value="Modificar" name="modify" type="submit"/>  <!--El boton "Modificar" lo puedes llamar por su nombre en el array Post "modify"-->
+        <input value="Eliminar" name="delete" type="submit"/>   <!--El boton "Eliminar" lo puedes llamar por su nombre en el array Post "delete"-->
     </p>
 </form>
 </body>

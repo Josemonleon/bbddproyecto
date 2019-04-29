@@ -38,9 +38,9 @@ if (isset($_POST['nombreTarea'])) { //Si el array Post ha podido coger el valor 
 }
 ?>
 
-<form action="" method="post">  //Cuando haces submit la página vuelve a cargar ella misma.
-    <p>Titulo: <input type="text" name="nombreTarea" /></p> //De aquí el array Post coge los datos de "nombreTarea" en caso de que estén llenos.
-    <p>Descripción: <input type="text" name="descripcionTarea" /></p>   //De aquí el array Post coge los datos de "descripcionTarea" en caso de que estén llenos.
+<form action="" method="post">  <!--Cuando haces submit la página vuelve a cargar ella misma.-->
+    <p>Titulo: <input type="text" name="nombreTarea" /></p> <!--De aquí el array Post coge los datos de "nombreTarea" en caso de que estén llenos.-->
+    <p>Descripción: <input type="text" name="descripcionTarea" /></p>   <!--//De aquí el array Post coge los datos de "descripcionTarea" en caso de que estén llenos.-->
     <input value="Insertar" name="insert" type="submit"/>
 </form>
 <?php

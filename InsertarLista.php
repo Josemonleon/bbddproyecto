@@ -23,16 +23,16 @@ if (isset($_POST['add'])) { //Si esta pulsado el boton add (Se encuentra al fina
         echo "<p> $nombreLista se ha añadido correctamente. </p>";
     }
 }
-?>
-
-<form action="" method="post">  //Cuando haces submit la página vuelve a cargar ella misma.
-    <p>Titulo lista: <input type="text" name="nombreLista" /></p>   //El campo de texto "Titulo lista", lo puedes llamar por su nombre en el arry Post "nombreLista"
-    <p><input value="Añadir lista" name="add" type="submit"/></p>   //El boton "Añadir lista" lo puedes llamar por su nombre en el array Post "add"
-</form>
-<a href="VerListas.php">Volver atrás</a>
-</body>
-</html>
 
 //Post es un array que inicialmente está vacio. No entra al if y la pagina se ejecuta llamandose a si misma
 //Carga los valores "nombreLista" y "add"  que has introducido y vuelve al if inicial donde ya está el array post con datos.
 //Llamamos a esos datos y ejecutamos las instrucciones.
+?>
+
+<form action="" method="post">  <!--Cuando haces submit la página vuelve a cargar ella misma.-->
+    <p>Titulo lista: <input type="text" name="nombreLista" /></p>   <!--El campo de texto "Titulo lista", lo puedes llamar por su nombre en el arry Post "nombreLista"-->
+    <p><input value="Añadir lista" name="add" type="submit"/></p>   <!--El boton "Añadir lista" lo puedes llamar por su nombre en el array Post "add"-->
+</form>
+<a href="VerListas.php">Volver atrás</a>
+</body>
+</html>
