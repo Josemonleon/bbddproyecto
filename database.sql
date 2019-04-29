@@ -1,0 +1,13 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
+-- CREAR BASE DE DATOS
+CREATE DATABASE IF NOT EXISTS tareasdb;
+
+-- SELECCIONAR BASE DE DATOS
+USE tareasdb;
+
+-- CREAR TABLA LISTAS
+CREATE TABLE IF NOT EXISTS listas (id_lista INT AUTO_INCREMENT, nombreLista VARCHAR(128) NOT NULL, PRIMARY KEY (`id_lista`));
+
+-- CREAR TABLA TAREAS
+CREATE TABLE IF NOT EXISTS tareas (id_tarea INT AUTO_INCREMENT, nombreTarea VARCHAR(128) NOT NULL, descripcion VARCHAR(200), id_lista INT NOT NULL, PRIMARY KEY (id_tarea), CONSTRAINT fk_tareas_Listas FOREIGN KEY (id_lista) REFERENCES listas (`id_lista`) ON DELETE CASCADE);
