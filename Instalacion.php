@@ -3,7 +3,7 @@
 
 
 
-/*Llamamos al archivo .php donde guardamos todas las variables necesarias para la conexión de la bbdd*/
+/*Usamos el código del archivo donde guardamos todas las variables necesarias para la conexión de la bbdd*/
 require "Variables.php";
 
 /*Se realiza la conexión*/

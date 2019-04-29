@@ -1,6 +1,6 @@
 <?php
 
-/*Llamamos al archivo .php donde guardamos todas las variables necesarias para la conexión de la bbdd*/
+/*Utilizamos el archivo donde guardamos todas las variables necesarias para la conexión de la bbdd*/
 require "Variables.php";
 
 /*Se realiza la conexión. si NO es correcto mostrará el mensaje*/

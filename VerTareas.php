@@ -3,22 +3,26 @@
 
 <?php
 
+//Utilizamos el código del archivo ConexionBBDD.php
 require "ConexionBBDD.php";
 
-$lista_id = $_GET["id"];
+//Coge el id de la lista para modificar la seleccionada
+$lista_id = $_GET["id"];    //Get es un array que coge los valor de la URL despues del ? y lo puedes llamar. En éste caso llama al valor id.
 
-if (isset($_POST['add'])) {
-    $pagina = "InsertarTarea.php?id=$lista_id";
+if (isset($_POST['add'])) { //Si el array Post ha podido coger el valor de "add" (Se encuentra al final en el html)
+    $pagina = "InsertarTarea.php?id=$lista_id"; //Se le pasa el archivo al que debe ir y además el id de la lista para así saber que tareas le pertenecen
+
+    header("Location: $pagina");    //Muestra lo que hay en la variable $pagina
+
+} else if (isset($_POST['modify'])) {   //Si el array Post ha podido coger el valor de "modify" (Se encuentra al final en el html)
+    $tarea_id = $_POST['tarea_id']; //Guardar en una variable el dato guardado con ese nombre guardado en el array Post
+    $pagina = "ModificarTarea.php?id=$tarea_id";    //Se le pasa el archivo al que debe ir y además el id de la lista para así saber que tareas le pertenecen
+    
     header("Location: $pagina");
 
-} else if (isset($_POST['modify'])) {
-    $tarea_id = $_POST['tarea_id'];
-    $pagina = "ModificarTarea.php?id=$tarea_id";
-    header("Location: $pagina");
-
-} else if (isset($_POST['delete'])) {
-    $tarea_id = $_POST['tarea_id'];
-    $consulta = "DELETE FROM tareas WHERE id_tarea = $tarea_id;";
+} else if (isset($_POST['delete'])) {   //Si el array Post ha podido coger el valor de "delete" (Se encuentra al final en el html)
+    $tarea_id = $_POST['tarea_id']; //Guardar en una variable el dato guardado con ese nombre guardado en el array Post
+    $consulta = "DELETE FROM tareas WHERE id_tarea = $tarea_id;";   //Consulta sql donde borras la tarea con la id de la tarea seleccionada
 
     if (!$lista = $mysqli->query($consulta)) {
         echo "Lo sentimos. La Aplicación no funciona<br>";
@@ -30,6 +34,7 @@ if (isset($_POST['add'])) {
     }
 }
 
+//Consulta para seleccionar todos los datos de la tareas con el mismo id y visualizarla
 $consulta = "SELECT * FROM listas WHERE id_lista = $lista_id";
 
 if (!$lista=$mysqli->query($consulta)) {
@@ -39,11 +44,12 @@ if (!$lista=$mysqli->query($consulta)) {
     echo "Error: ".$mysqli->error. "<br>";
     exit;
 } else {
-    $fila=$lista->fetch_assoc();
-    $nombre = $fila["nombreLista"];
-    echo "<h1> $nombre </h1>";
+    $fila=$lista->fetch_assoc();    //Convierte el resultado de la consulta (datos de la bbdd) en un array.
+    $nombre = $fila["nombreLista"]; //Aqui guardamos en una variable uno de los datos del array.
+    echo "<h1> $nombre </h1>";  //Se muestra el nombre de la lista sobre la que estamos actuando
 }
 
+//Consulta para seleccionar todos los datos de la tareas con el mismo id y visualizarla
 $consulta="SELECT * FROM tareas WHERE id_lista = $lista_id";
 if (!$resultado=$mysqli->query($consulta)) {
     echo "Error en la ejecución debido a: <br>";
@@ -64,7 +70,7 @@ if (!$resultado=$mysqli->query($consulta)) {
     $numregistros=$resultado->num_rows;
 
     for ($i=1;$i<=$numregistros;$i++) {
-        $fila=$resultado->fetch_assoc();
+        $fila=$resultado->fetch_assoc();    //Convierte el resultado de la consulta (datos de la bbdd) en un array.
         $id = $fila["id_tarea"];
         $nombre = $fila["nombreTarea"];
         $descripcion = $fila["descripcion"];
@@ -74,7 +80,7 @@ if (!$resultado=$mysqli->query($consulta)) {
             $checked = 'checked';
         }
 
-        echo("<input type='radio' name='tarea_id' value='$id' $checked> $nombre -> $descripcion<br>");
+        echo("<input type='radio' name='tarea_id' value='$id' $checked> $nombre -> $descripcion<br>");  //Chekea el primer valor de la lista
     }
     ?>
 
