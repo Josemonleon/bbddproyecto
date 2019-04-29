@@ -14,7 +14,10 @@ if (isset($_POST['show'])) {
 
     header("Location: $pagina");
 } else if (isset($_POST['modify'])) {
-    //TODO To be implemented
+    $listaId = $_POST['lista_id'];  //Se guarda en una variable el valor de "id_lista" que hay en la bbdd
+    $pagina = "ModificarLista.php?id=$listaId";
+
+    header("Location: $pagina");
 } else if (isset($_POST['delete'])) {
     $listaId = $_POST['lista_id'];
     $consulta ="DELETE FROM listas WHERE id_lista = $listaId;";
