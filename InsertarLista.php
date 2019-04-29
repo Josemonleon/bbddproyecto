@@ -25,7 +25,6 @@ if (isset($_POST['nombreLista'])) {
     <p>Titulo lista: <input type="text" name="nombreLista" /></p>
     <p><input value="Añadir lista" name="add" type="submit"/></p>
 </form>
-<body>
 <a href="VerListas.php">Volver atrás</a>
 </body>
 </html>

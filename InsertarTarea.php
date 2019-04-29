@@ -42,10 +42,9 @@ if (isset($_POST['nombreTarea'])) {
     <p>Descripción: <input type="text" name="descripcionTarea" /></p>
     <input value="Insertar" name="insert" type="submit"/>
 </form>
-<body>
 <?php
-    $pagina = "VerTareas.php?id=$lista_id";
-    echo ("<a href='$pagina'>Volver atrás</a>")
+$pagina = "VerTareas.php?id=$lista_id";
+echo ("<a href='$pagina'>Volver atrás</a>")
 ?>
 </body>
 </html>

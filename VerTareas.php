@@ -10,7 +10,11 @@ $lista_id = $_GET["id"];
 if (isset($_POST['add'])) {
     $pagina = "InsertarTarea.php?id=$lista_id";
     header("Location: $pagina");
+
 } else if (isset($_POST['modify'])) {
+    $tarea_id = $_POST['tarea_id'];
+    $pagina = "ModificarTarea.php?id=$tarea_id";
+    header("Location: $pagina");
 
 } else if (isset($_POST['delete'])) {
     $tarea_id = $_POST['tarea_id'];
