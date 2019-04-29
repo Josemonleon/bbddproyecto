@@ -43,6 +43,9 @@ if (isset($_POST['nombreTarea'])) {
     <input value="Insertar" name="insert" type="submit"/>
 </form>
 <body>
-<a href="VerTareas.php">Volver atrás</a>
+<?php
+    $pagina = "VerTareas.php?id=$lista_id";
+    echo ("<a href='$pagina'>Volver atrás</a>")
+?>
 </body>
 </html>

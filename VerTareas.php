@@ -7,16 +7,23 @@ require "ConexionBBDD.php";
 
 $lista_id = $_GET["id"];
 
-if (isset($_POST['delete'])) {
-    $consulta ="DELETE FROM tareas WHERE id_lista = $lista_id;";
+if (isset($_POST['add'])) {
+    $pagina = "InsertarTarea.php?id=$lista_id";
+    header("Location: $pagina");
+} else if (isset($_POST['modify'])) {
 
-    if (!$lista=$mysqli->query($consulta)) {
+} else if (isset($_POST['delete'])) {
+    $tarea_id = $_POST['tarea_id'];
+    $consulta = "DELETE FROM tareas WHERE id_tarea = $tarea_id;";
+
+    if (!$lista = $mysqli->query($consulta)) {
         echo "Lo sentimos. La Aplicación no funciona<br>";
-        echo "Error. en la consulta: ".$consulta."<br>";
-        echo "Num.error: ".$mysqli->errno."<br>";
-        echo "Error: ".$mysqli->error. "<br>";
-        
-    } 
+        echo "Error. en la consulta: " . $consulta . "<br>";
+        echo "Num.error: " . $mysqli->errno . "<br>";
+        echo "Error: " . $mysqli->error . "<br>";
+    } else {
+        echo "Se ha eliminado correctamente.";
+    }
 }
 
 $consulta = "SELECT * FROM listas WHERE id_lista = $lista_id";
@@ -42,14 +49,7 @@ if (!$resultado=$mysqli->query($consulta)) {
     die("Fallo");
 }
 
-if (isset($_POST['add'])) {
-    $pagina = "InsertarTarea.php?id=$lista_id";
-    header("Location: $pagina");
-} else if (isset($_POST['modify'])) {
 
-} else if (isset($_POST['delete'])) {
-
-}
 ?>
 
 <h2>Tareas</h2>
@@ -70,7 +70,7 @@ if (isset($_POST['add'])) {
             $checked = 'checked';
         }
 
-        echo("<input type='radio' name='lista_id' value='$id' $checked> $nombre<br>");
+        echo("<input type='radio' name='tarea_id' value='$id' $checked> $nombre -> $descripcion<br>");
     }
     ?>
 
